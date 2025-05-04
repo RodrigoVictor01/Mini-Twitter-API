@@ -74,7 +74,7 @@ Before getting started, make sure you have the following installed:
 
    ```plaintext
    REDIS_URL=redis://redis:6379/0
-
+   ```
 
 7. **Apply database migrations:**
 
