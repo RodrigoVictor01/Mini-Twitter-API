@@ -70,7 +70,7 @@ Before getting started, make sure you have the following installed:
 
 5. **Ensure Redis is running and accessible.**
 
-   Example Redis URL for Django settings:
+   Example Redis URL for .env:
 
    ```plaintext
    REDIS_URL=redis://redis:6379/0
