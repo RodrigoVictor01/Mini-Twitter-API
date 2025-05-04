@@ -14,16 +14,19 @@ from pathlib import Path
 from datetime import timedelta
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--&4#=hxm2f9(gd$e@do-dws++nu8s8uadwhamy7eg(q8@4%bj#'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DJANGO_DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -107,18 +110,6 @@ WSGI_APPLICATION = 'mini_twitter.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-from dotenv import load_dotenv
-import os
-load_dotenv()
 
 CACHES = {
     "default": {
@@ -129,7 +120,7 @@ CACHES = {
         }
     }
 }
-print('password postgres', os.getenv('POSTGRES_PASSWORD'))
+
 
 DATABASES = {
     'default': {
@@ -137,7 +128,7 @@ DATABASES = {
         'NAME': os.getenv('POSTGRES_DB'),
         'USER': os.getenv('POSTGRES_USER'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-        'HOST': 'db',
+        'HOST': 'db', # or 'localhost' if not using Docker
         'PORT': '5432',
     }
 }
